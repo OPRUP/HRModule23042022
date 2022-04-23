@@ -1,0 +1,327 @@
+// :host {
+//   > .container {
+//     max-width: 1264px;
+//     width: 100%;
+//     margin: 0 auto;
+//     display: flex;
+//     justify-content: space-between;
+//     background: none;
+//   }
+//   ::ng-deep {
+//     .mat-tab-group {
+//       flex-direction: row;
+//     }
+//     .mat-tab-header {
+//       border-bottom: none;
+//     }
+//     .mat-tab-header-pagination {
+//       display: none !important;
+//     }
+//     .mat-tab-labels {
+//       flex-direction: column;
+//     }
+//     .mat-ink-bar {
+//       height: 100%;
+//       left: 98% !important;
+//     }
+//     .mat-tab-body-wrapper {
+//       flex: 1 1 auto;
+//     }
+//   }
+// }
+
+// .container {
+//   position: relative;
+//   width: 100%;
+//   flex: 1 0 auto;
+//   margin: 0 auto;
+//   text-align: left;
+// }
+
+// #content {
+//   box-sizing: content-box;
+//   margin: 0 auto;
+//   padding: 15px;
+//   width: 1264px;
+//   background-color: #ffffff;
+// }
+
+// #content {
+//   max-width: 1100px;
+//   width: 100%;
+//   background-color: #ffffff;
+//   padding: 24px;
+//   box-sizing: border-box;
+// }
+
+// #content,
+// #main-content {
+//   &::before,
+//   &::after {
+//     content: "";
+//     display: table;
+//   }
+//   &::after {
+//     clear: both;
+//   }
+// }
+
+
+/* You can add global styles to this file, and also import other style files */
+*{
+  font-family: 'Nunito Sans';
+  font-family:  "Helvetica Neue", sans-serif;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+.main{
+  width: 100%;
+  display: flex;
+  background-color: #f2f2f2;
+  // height: 100vh;
+
+  .column-1{
+    width: 20%;
+    float: left;
+    // background-color: #f2f2f2;
+    background-color: #000000;
+    margin-right: 10px;
+  }
+  .column-2{
+    width: 80%;
+    float: left;
+    background-color: #fff;
+    // div{
+    //   padding: 20px;
+    // }
+  }
+  .card-header{
+    background-color: #000;
+    color: #fff;
+  }
+}
+.active{
+  outline: 1px solid #ddd;
+  cursor: pointer;
+  background-color:#727475;
+  color: #727475;
+}
+.vertical-menu {
+
+    display: block !important;
+    width: 100%;
+    text-align: center;
+    list-style-type: none;
+    padding: 0px;
+  }
+
+  .vertical-menu li {
+    color: #fff;
+    font-style: normal;
+    font-weight: 700;
+    text-align: left;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid #b1adad;
+    border-radius: 2px;
+  }
+
+
+
+  li:after {
+    display: none;
+  }
+
+
+  @media(max-width:550px){
+    .column-1{
+      width: 40% !important;
+
+    }
+    .column-2{
+      width: 60% !important;
+    }
+  }
+
+  ::ng-deep{
+    .datatable-body{
+        height: 600px !important;
+        overflow: scroll;
+        width: 100%;
+    }
+
+    .dataTable-bottom{
+        position: absolute;
+        left:0;
+        right:0;
+        bottom: 0;
+        background: #fff !important;
+    }
+    .dataTable-sorter::before, .dataTable-sorter::after{
+        right: -10px !important;
+    }
+
+    table th, table td ,
+    .ngx-datatable.material .datatable-header .datatable-header-cell,
+    .ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell{
+        font-size: 0.876rem !important;
+    }
+
+    table thead{
+      color: #fff;
+    }
+
+    .ngx-datatable .datatable-footer .datatable-footer-inner{
+        flex-wrap: wrap;
+        height: auto !important;
+    }
+
+    .dataTable-wrapper.no-footer .dataTable-container{
+        border-bottom: none !important;
+    }
+    .dataTable-selector{
+        border-radius: 0.25rem;
+    }
+    app-data-tables{
+        input{
+            border-radius: 25px;
+            border: 1px solid rgba($color: #000000, $alpha: 0.1);
+        }
+    }
+  }
+  ::ng-deep{
+    .dark-mode{
+        .ngx-datatable.material{
+            background-color: rgba(2, 3, 12, 0.836) !important;
+        }
+        .dataTable-bottom{
+            background-color: #01030e !important;
+        }
+        .dataTable-selector{
+            background-color: #02030ad5;
+            border-color:#272c49;
+            color: #fff;
+            outline: none;
+        }
+        input {
+            color: #eee !important;
+            background-color: #000000 !important;
+            border-color: #000000;
+            border-radius: 25px;
+        }
+
+        li.active a{
+            color: #000;
+        }
+
+        .ngx-datatable.material .datatable-header .datatable-header-cell,
+        .ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell{
+            background-color: #000;
+            color: #fff;
+        }
+        .ngx-datatable.material .datatable-footer {
+            border-top: 1px solid rgb(39 43 74) !important;
+            color: rgb(255 255 255) !important;
+            background: #000 !important;
+        }
+        .ngx-datatable.material .datatable-footer .datatable-pager li.disabled a {
+            color: #fff !important;
+            background-color: transparent !important;
+        }
+        .ngx-datatable.material .datatable-footer .datatable-pager li.active a {
+            background-color: rgb(207 208 216) !important;
+        }
+        .ngx-datatable.material .datatable-footer .datatable-pager a{
+            color: #fff !important;
+        }
+        .ngx-datatable.material .datatable-header {
+            border-bottom: 1px solid rgb(8, 8, 8) !important;
+        }
+    }
+  }
+
+  .card-body > :last-child {
+    margin-bottom: 50px;
+  }
+// Import ng-select component styles
+.ng-select.ng-select-multiple
+  .ng-select-container
+  .ng-value-container
+  .ng-value {
+  padding: 4px 12px !important;
+  border-radius: 50px;
+  background-color: #e0e0e0;
+  color: #1e1e1e;
+}
+.ng-select.ng-select-multiple
+  .ng-select-container
+  .ng-value-container
+  .ng-value
+  .ng-value-icon {
+  background-color: #9a9a9a;
+  border-radius: 100px;
+  color: #e0e0e0;
+  padding: 0px 5px;
+  padding-bottom: 1px;
+  align-items: center;
+  justify-content: center;
+}
+
+.ng-select .ng-select-container:after {
+  border-bottom: none !important;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  transition: border-color 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+}
+
+.ng-select.ng-select-focused .ng-select-container:after {
+  border-color: inherit;
+  border-width: 0px;
+}
+.ng-select.ng-select-multiple .ng-select-container {
+  position: relative;
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  border-radius: 6px;
+  padding: 0px 16px;
+  border-width: 1px;
+  --tw-border-opacity: 1 !important;
+  border-color: rgba(203, 213, 225, var(--tw-border-opacity)) !important;
+}
+.ng-select.ng-select-multiple
+  .ng-select-container.ng-has-value
+  .ng-value-container {
+  padding-bottom: 0;
+  padding-top: 0.5em;
+}
+
+.ng-select.ng-select-multiple
+  .ng-select-container.ng-has-value
+  .ng-clear-wrapper,
+.ng-select.ng-select-multiple
+  .ng-select-container.ng-has-value
+  .ng-arrow-wrapper {
+  border-top: none;
+}
+.ng-select .ng-select-container .ng-value-container .ng-input > input {
+  padding-top: 5px !important;
+}
+.ng-select.ng-select-multiple
+  .ng-select-container
+  .ng-value-container
+  .ng-placeholder {
+  display: none;
+}
+.ng-select .ng-select-container .ng-value-container {
+  align-items: stretch;
+  padding: 0.4375em 0;
+  border-top: 0px solid transparent;
+}
+

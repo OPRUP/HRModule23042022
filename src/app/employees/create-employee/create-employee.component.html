@@ -1,0 +1,954 @@
+<!--Page header-->
+  <div class="page-header">
+    <div class="page-leftheader">
+      <h2 class="page-title">Create Employee</h2>
+    </div>
+    <div class="page-rightheader ms-auto d-lg-flex d-none">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)" class="d-flex"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" 
+          height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/>
+          <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z"/>
+          <path d="M7 10.19V18h2v-6h6v6h2v-7.81l-5-4.5z" opacity=".3"/></svg><span class="breadcrumb-icon"> Home</span></a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Employees</a></li>
+        <li class="breadcrumb-item" aria-current="page">Create employee</li>
+      </ol>
+    </div>
+  </div>
+  <!--End Page header-->
+
+  <!-- <div class="card"> -->
+
+        <div class="main">
+          <div class="column-1">
+            <ul class="vertical-menu">
+                <li (click)="viewMode ='tab01'" [ngClass]="{'active':viewMode =='tab01'}">Basic Information</li>
+                <li (click)="viewMode ='tab02'" [ngClass]="{'active':viewMode =='tab02'}">Profile Picture</li>
+                <li (click)="viewMode ='tab03'" [ngClass]="{'active':viewMode =='tab03'}">Document</li>
+                <li (click)="viewMode ='tab04'" [ngClass]="{'active':viewMode =='tab04'}">Residence</li>
+                <li (click)="viewMode ='tab05'" [ngClass]="{'active':viewMode =='tab05'}">Address</li>
+                <li (click)="viewMode ='tab06'" [ngClass]="{'active':viewMode =='tab06'}">Qualification</li>
+                <li (click)="viewMode ='tab07'" [ngClass]="{'active':viewMode =='tab07'}">Work Experience</li>
+                <li (click)="viewMode ='tab08'" [ngClass]="{'active':viewMode =='tab08'}">Bank Account</li>
+                <li (click)="viewMode ='tab09'" [ngClass]="{'active':viewMode =='tab09'}">Contract</li>
+                <li (click)="viewMode ='tab10'" [ngClass]="{'active':viewMode =='tab10'}">Health Insurance</li>
+            </ul>
+          </div>
+          <div class="column-2" [ngSwitch]="viewMode">
+            <div *ngSwitchCase="'tab01'">
+              <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onAddDepartment(addForm)" class="form-horizontal">
+                  <div class="card-header">
+                    <h2>Add New Employee</h2>
+                 </div>
+                 <div class="row m-3">
+                   <div class="col-md-8">
+                    <label for="" class="form-label">Employee Name:</label>
+                    <input type="text" #employeename (ngModel)="employeename" id="employeename" name="employeename" class="form-control mt-2 text-line" placeholder="Full Name" >
+                   </div>
+                   <div class="col-md-4">
+                    <label for="" class="form-label">Employee ID:</label>
+                    <input type="text" #employeid (ngModel)="employeid" id="employeid" name="employeid" class="form-control mt-2 text-line" placeholder="Employee ID" >
+                   </div>
+                 </div>
+                <div class="row m-3">
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Department Name:</label>
+                    <ng-select #departmentdid (ngModel)="departmentdid" name="departmentdid" id="departmentdid" class="form-control form-select" placeholder="No Department Name">
+                      <ng-option value="0" [disabled] = true>Select Department Name"</ng-option>
+                      <ng-option value="1">Information technology</ng-option>
+                      <ng-option value="2">Sales</ng-option>
+                      <ng-option value="3">Accounting</ng-option>
+                      <ng-option value="4">Human resources</ng-option>
+                     
+                    </ng-select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Job Title:</label>
+                    <ng-select #jobtitle (ngModel)="jobtitle" name="jobtitle" id="jobtitle" class="form-control form-select"  placeholder="No Job Title">
+                      <ng-option value="0" [disabled] = true>Select Job Title"</ng-option>
+                      <ng-option value="1">Programmer</ng-option>
+                      <ng-option value="2">Accountant</ng-option>
+                      <ng-option value="3">Manager</ng-option>
+                     
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="row m-3">                 
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Place Of Birth:</label>
+                    <input type="text" #placeofbirth (ngModel)="placeofbirth" id="placeofbirth" name="placeofbirth" class="form-control mt-2 text-line" placeholder="Place Of Birth" >
+                   </div>
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Date Of Birth:</label>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                      <input #dateofbirth (ngModel)="dateofbirth" matInput [matDatepicker]="picker1">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                  </div>
+                </div>
+                 <div class="row m-3">
+                  <div class="col-md-6">
+                     <label for="" class="form-label">Date Of Join:</label>
+                         <mat-form-field appearance="fill">
+                           <mat-label>Choose a date</mat-label>
+                         <!-- #docregion toggle -->
+                           <input #dateofjoin (ngModel)="dateofjoin" matInput [matDatepicker]="picker2">
+                           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                           <mat-datepicker #picker2></mat-datepicker>
+                         <!-- #enddocregion toggle -->
+                         </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Date Of Leaving:</label>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Choose a date</mat-label>
+                      <!-- #docregion toggle -->
+                      <input #dateofleaving (ngModel)="dateofleaving" matInput [matDatepicker]="picker3">
+                      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                      <mat-datepicker #picker3></mat-datepicker>
+                      <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                  </div>
+
+                </div>
+                <div class="row m-3">
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Gender:</label>
+                    <ng-select #gender (ngModel)="gender" name="gender" id="gender" class="form-control form-select" placeholder="No Gender">
+                      <ng-option value="0" [disabled] = true>Select Gender"</ng-option>
+                      <ng-option value="">Male</ng-option>
+                      <ng-option value="1">Female</ng-option>
+                    </ng-select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Martial Status:</label>
+                    <ng-select #martialstatus (ngModel)="martialstatus" name="martialstatus" id="martialstatus"class="form-control form-select" placeholder="No Martial Status">
+                      <ng-option value="0" [disabled] = true>Select Martial Status"</ng-option>
+                      <ng-option value="">Married</ng-option>
+                      <ng-option value="1">Single</ng-option>
+                      <ng-option value="2">divorced </ng-option>
+                      <ng-option value="2">Widower </ng-option>
+                      <ng-option value="2">others </ng-option>
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="row m-3">
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Nationality:</label>
+                    <ng-select #nationality (ngModel)="nationality" name="nationality" id="nationality"class="form-control form-select"  placeholder="No Nationality">
+                      <ng-option value="0" [disabled] = true>Select Nationality"</ng-option>
+                      <ng-option value="">KSA</ng-option>
+                      <ng-option value="1">Jordan</ng-option>
+                      <ng-option value="1">India</ng-option>
+                      <ng-option value="1">Bangladesh</ng-option>
+                      <ng-option value="1">Syrian</ng-option>
+                      <ng-option value="1">Other</ng-option>
+                    </ng-select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Religion:</label>
+                    <ng-select #religion (ngModel)="religion" name="religion" id="religion" class="form-control form-select"  placeholder="No Religion">
+                      <ng-option value="0" [disabled] = true>Select Religion"</ng-option>
+                      <ng-option value="">Islamic</ng-option>
+                      <ng-option value="1">Christian</ng-option>
+                      <ng-option value="2">Others</ng-option>
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="row m-3">
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Shift / Working Hours:</label>
+                    <ng-select #shift (ngModel)="shift" name="shift" id="shift"class="form-control form-select" placeholder="No Shift / Working Hours">
+                      <ng-option value="0" [disabled] = true>Select Shift / Working Hours"</ng-option>
+                      <ng-option value="">Shift one</ng-option>
+                      <ng-option value="1">Shift two</ng-option>
+                      <ng-option value="1">Shift three</ng-option>
+                    </ng-select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="" class="form-label">Basic Salary:</label>
+                    <input type="text" #basicsalary (ngModel)="basicsalary" id="basicsalary" name="basicsalary" class="form-control mt-2 text-line" placeholder="Basic Salary" >
+                  </div>
+                </div>
+                <div class="row m-3">
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Role:</label>
+                    <ng-select #role (ngModel)="role" name="role" id="role" class="form-control form-select" placeholder="No Role">
+                      <ng-option value="0" [disabled] = true>Select Role Name"</ng-option>
+                      <ng-option value="">admin</ng-option>
+                      <ng-option value="1">Employee</ng-option>
+                      <ng-option value="1">HR manager</ng-option>
+                      <ng-option value="1">IT manager</ng-option>
+                      <ng-option value="1">Sales manager</ng-option>
+                      <ng-option value="1">Accounting manager</ng-option>
+                    </ng-select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Designation:</label>                    
+                    <input type="text" #designation (ngModel)="designation" id="designation" name="designation" class="form-control mt-2 text-line" placeholder="Designation Name" >
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Status:</label>
+                    <ng-select #status (ngModel)="status" name="status" id="status" class="form-control form-select" placeholder="No Status">
+                      <ng-option value="0" [disabled] = true>Select Status"</ng-option>
+                      <ng-option value="">Active</ng-option>
+                      <ng-option value="1">Deactivated</ng-option>
+                    </ng-select>
+                  </div>
+                  <div class="row m-4">
+                    <div class="col-md-6">
+                        <button type="submit" id="add-department-form" class="btn btn-dark m-3">SAVE</button>
+                    </div>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+            <div *ngSwitchCase="'tab02'">
+              <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onAddDepartment(addForm)" class="form-horizontal">
+                  <div class="card-header">
+                     <h2>Add Profile Picture</h2>
+                    </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Upload Profile Picture:</label>
+                      <input type="file" class="btn btn-default">
+                      
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button type="submit" id="add-department-form" class="btn btn-dark m-3">SAVE</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+            <div *ngSwitchCase="'tab03'">
+              <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onAddDepartment(addForm)" class="form-horizontal">
+                  <div class="card-header">
+                     <h2>Add New Document</h2>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Document Type:</label>
+                      <ng-select #documenttype (ngModel)="documenttype" name="documenttype" id="documenttype" class="form-control form-select" placeholder="Document Type">
+                        <ng-option value="" [disabled]="true">Select Document</ng-option>
+                        <ng-option value="1">Passport</ng-option>
+                        <ng-option value="2">Residence</ng-option>
+                        <ng-option value="3">birth certificate</ng-option>
+                        <ng-option value="4">identity</ng-option>
+                        <ng-option value="5">Others</ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Document Number:</label>
+                      <input type="text" #documentnumber (ngModel)="documentnumber" id="documentnumber" name="documentnumber" class="form-control mt-2 text-line" placeholder="Document Number" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Document Title:</label>
+                      <input type="text" #documenttitle (ngModel)="documenttitle" id="documenttitle" name="documenttitle" class="form-control mt-2 text-line" placeholder="Document Title" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Expiry date:</label>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                          <input #sdate (ngModel)="sdate" matInput [matDatepicker]="picker">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Upload Document File:</label>
+                      <input type="file">
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button type="submit" id="add-department-form" class="btn btn-dark m-3">SAVE</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+            <div *ngSwitchCase="'tab04'">
+              <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onAddDepartment(addForm)" class="form-horizontal">
+                  <div class="card-header">
+                     <h2>Add New Residence</h2>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Document Name:</label>
+                      <input type="text" #documentRname (ngModel)="documentRname" id="documentRname" name="documentRname" class="form-control mt-2 text-line" placeholder="Document Name" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Document Number:</label>
+                      <input type="text" #documentRnumber (ngModel)="documentRnumber" id="documentRnumber" name="documentRnumber" class="form-control mt-2 text-line" placeholder="Document Number" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Issue Date:</label>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                          <input #issuedate (ngModel)="issuedate" matInput [matDatepicker]="picker_issuedate">
+                          <mat-datepicker-toggle matSuffix [for]="picker_issuedate"></mat-datepicker-toggle>
+                          <mat-datepicker #picker_issuedate></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Expiry Date:</label>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                          <input #expiryRdate (ngModel)="expiryRdate" matInput [matDatepicker]="picker_expiryRdate">
+                          <mat-datepicker-toggle matSuffix [for]="picker_expiryRdate"></mat-datepicker-toggle>
+                          <mat-datepicker #picker_expiryRdate></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Country:</label>
+                          <ng-select #countryr (ngModel)="countryr" name="countryr" id="countryr" class="form-control form-select" placeholder="Select Country">
+                            <ng-option value="0" [disabled]="true">No Country</ng-option>
+                            <ng-option value="1">KSA</ng-option>
+                            <ng-option value="2">Jordan</ng-option>
+                            <ng-option value="3">Eygept</ng-option>
+                            <ng-option value="4">Syrian</ng-option>
+                            <ng-option value="5">India</ng-option>
+                            <ng-option value="6">Others</ng-option>
+                          </ng-select>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button type="submit" id="add-department-form" class="btn btn-dark m-3">SAVE</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div *ngSwitchCase="'tab05'">
+              <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onAddDepartment(addForm)" class="form-horizontal">
+                  <div class="card-header">
+                     <h2>Add New Address</h2>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Email:</label>
+                      <input type="text" #email (ngModel)="email" id="email" name="email" class="form-control mt-2 text-line" placeholder="email" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Country Address:</label>
+                      <input type="text" #countryaddress (ngModel)="countryaddress" id="countryaddress" name="countryaddress" class="form-control mt-2 text-line" placeholder="Country address" >
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Country Contact Number:</label>
+                      <input type="text" #contactno (ngModel)="contactno" id="contactno" name="contactno" class="form-control mt-2 text-line" placeholder="Country Contact Number" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Residence Address:</label>
+                      <input type="text" #residenceaddress (ngModel)="residenceaddress" id="residenceaddress" name="residenceaddress" class="form-control mt-2 text-line" placeholder="Residence address" >
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Residence Contact Number:</label>
+                      <input type="text" #residencecontactno (ngModel)="residencecontactno" id="residencecontactno" name="residencecontactno" class="form-control mt-2 text-line" placeholder="Residence Contact Number" >
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <button type="submit" id="add-department-form" class="btn btn-dark m-3">SAVE</button>
+                  </div>
+
+
+                </form>
+
+              </div>
+            </div>
+            <div *ngSwitchCase="'tab06'">
+              <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onAddDepartment(addForm)" class="form-horizontal">
+                  <div class="card-header">
+                     <h2>Add New Qualification</h2>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">University / School Name:</label>
+                          <ng-select #universityschool (ngModel)="universityschool" name="universityschool" id="universityschool" class="form-control form-select" placeholder="Select University / School Name">
+                            <ng-option value="" [disabled]="true">No University / School Name selected</ng-option>
+                            <ng-option value="1">University 1</ng-option>
+                            <ng-option value="2">University 2</ng-option>
+                            <ng-option value="3">University 3</ng-option>
+                            <ng-option value="4">University 4</ng-option>
+                            <ng-option value="5">University 5</ng-option>
+                          </ng-select>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Major Name:</label>
+                          <ng-select #majorname (ngModel)="majorname" name="majorname" id="majorname" class="form-control form-select" placeholder="Select Major Name">
+                            <ng-option value="" [disabled]="true">No Major Name selected</ng-option>
+                            <ng-option value="1">Computer Sciences</ng-option>
+                            <ng-option value="2">Accounting</ng-option>
+                            <ng-option value="3">Business administration</ng-option>
+                            
+                          </ng-select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Qualification Name:</label>
+                          <ng-select #qualificationid (ngModel)="qualificationid" name="qualificationid" id="qualificationid" class="form-control form-select" placeholder="Select Qualification Name">
+                          <ng-option value="" [disabled]="true">No Qualification Name selected</ng-option>
+                            <ng-option value="1">Phd</ng-option>
+                            <ng-option value="2">Bsc</ng-option>
+                            <ng-option value="3">Diploma</ng-option>
+                            <ng-option value="4">others</ng-option>
+                          </ng-select>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">From:</label>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                          <input #picker_qualification_start1 (ngModel)="picker_qualification_start1" matInput [matDatepicker]="picker_qualification_start">
+                          <mat-datepicker-toggle matSuffix [for]="picker_qualification_start"></mat-datepicker-toggle>
+                          <mat-datepicker #picker_qualification_start></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">To:</label>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                          <input #picker_qualification_end1 (ngModel)="picker_qualification_end1" matInput [matDatepicker]="picker_qualification_end">
+                          <mat-datepicker-toggle matSuffix [for]="picker_qualification_end"></mat-datepicker-toggle>
+                          <mat-datepicker #picker_qualification_end></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-5">
+                      <label for="" class="form-label">Degree:</label>
+                      <input type="text" #degree (ngModel)="degree" id="degree" name="degree" class="form-control mt-2 text-line" placeholder="Degree" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-12">
+                       <button type="submit" id="add-department-form" class="btn btn-dark m-3">SAVE</button>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="card-title bg-dark p-3 text-white">
+                      List Of Qualifications
+                    </div>
+                    <div class="table-responsive table-bordered table-hover table-striped">
+                      <table class="table text-md-nowrap" id="myTable1">
+                        <thead>
+                          <tr>
+                            <th class="wd-15p border-bottom-0">University</th>
+                            <th class="wd-15p border-bottom-0">Major</th>
+                            <th class="wd-15p border-bottom-0">Qualification</th>
+                            <th class="wd-15p border-bottom-0">Dagree</th>
+                            <th class="wd-15p border-bottom-0">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td class="align-middle">
+                              <div class="btn-group align-top">
+                                <button  class="btn btn-sm btn-light btn-svg" type="button">Edit</button>
+                                <button  class="btn btn-sm btn-light btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 9h8v10H8z" opacity=".3"/><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td class="align-middle">
+                              <div class="btn-group align-top">
+                                <button  class="btn btn-sm btn-light btn-svg" type="button">Edit</button>
+                                <button  class="btn btn-sm btn-light btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 9h8v10H8z" opacity=".3"/><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+            <div *ngSwitchCase="'tab07'">
+              <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onAddDepartment(addForm)" class="form-horizontal">
+                  <div class="card-header">
+                    <h2>Add New Work Experience</h2>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Company Name:</label>
+                      <input type="text" #companyname (ngModel)="companyname" id="companyname" name="companyname" class="form-control mt-2 text-line" placeholder="Company Name" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Job Title:</label>
+                      <input type="text" #cjobtitle (ngModel)="cjobtitle" id="cjobtitle" name="cjobtitle" class="form-control mt-2 text-line" placeholder="Job Title" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">From:</label>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                          <input #expfrom (ngModel)="expfrom" matInput [matDatepicker]="picker_expfrom">
+                          <mat-datepicker-toggle matSuffix [for]="picker_expfrom"></mat-datepicker-toggle>
+                          <mat-datepicker #picker_expfrom></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">To:</label>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                          <input #expto (ngModel)="expto" matInput [matDatepicker]="picker_expto">
+                          <mat-datepicker-toggle matSuffix [for]="picker_expto"></mat-datepicker-toggle>
+                          <mat-datepicker #picker_expto></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-12">
+                      <button type="submit" id="add-department-form" class="btn btn-dark m-3">SAVE</button>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="card-title bg-dark p-3 text-white">
+                      List Of Experiences
+                    </div>
+                    <div class="table-responsive table-bordered table-hover table-striped">
+                      <table class="table text-md-nowrap" id="myTable1">
+                        <thead>
+                          <tr>
+                            <th class="wd-15p border-bottom-0">Company</th>
+                            <th class="wd-15p border-bottom-0">Job Title</th>
+                            <th class="wd-15p border-bottom-0">Work From</th>
+                            <th class="wd-15p border-bottom-0">Work To</th>
+                            <th class="wd-15p border-bottom-0">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td class="align-middle">
+                              <div class="btn-group align-top">
+                                <button  class="btn btn-sm btn-light btn-svg" type="button">Edit</button>
+                                <button  class="btn btn-sm btn-light btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 9h8v10H8z" opacity=".3"/><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td class="align-middle">
+                              <div class="btn-group align-top">
+                                <button  class="btn btn-sm btn-light btn-svg" type="button">Edit</button>
+                                <button  class="btn btn-sm btn-light btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 9h8v10H8z" opacity=".3"/><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+            <div *ngSwitchCase="'tab08'">
+              <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onAddDepartment(addForm)" class="form-horizontal">
+                  <div class="card-header">
+                     <h2>Add New Bank</h2>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Bank Name:</label>
+                      <input type="text" #bankname (ngModel)="bankname" id="bankname" name="bankname" class="form-control mt-2 text-line" placeholder="Bank Name" >
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Account Type:</label>
+                      <ng-select #accounttype (ngModel)="accounttype" name="accounttype" id="accounttype" class="form-control form-select" placeholder="Select Account Type">
+                        <ng-option value="" [disabled]="true">No Account Type Selected</ng-option>
+                        <ng-option value="1">Saving</ng-option>
+                        <ng-option value="2">Salary </ng-option>
+                        <ng-option value="3">Fixed deposit</ng-option>
+                        <ng-option value="4">Recurring deposit</ng-option>
+                        <ng-option value="5">Others</ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Account Number:</label>
+                      <input type="text" #accnumber (ngModel)="accnumber" id="accnumber" name="accnumber" class="form-control mt-2 text-line" placeholder="Account Number" >
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Bank Code:</label>
+                      <input type="text" #bankcode (ngModel)="bankcode" id="bankcode" name="bankcode" class="form-control mt-2 text-line" placeholder="Bank Code" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Bank Branch:</label>
+                      <input type="text" #bankbranch (ngModel)="bankbranch" id="bankbranch" name="bankbranch" class="form-control mt-2 text-line" placeholder="Bank Branch" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                   <div class="col-md-12">
+                    <button type="submit" id="add-department-form" class="btn btn-dark m-3">SAVE</button>
+                   </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="card-title bg-dark p-3 text-white">
+                      List Of Banks
+                    </div>
+                    <div class="table-responsive table-bordered table-hover table-striped">
+                      <table class="table text-md-nowrap" id="myTable1">
+                        <thead>
+                          <tr>
+                            <th class="wd-15p border-bottom-0">Bank</th>
+                            <th class="wd-15p border-bottom-0">Account Type</th>
+                            <th class="wd-15p border-bottom-0">Account Number</th>
+                            <th class="wd-15p border-bottom-0">Branch</th>
+                            <th class="wd-15p border-bottom-0">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td class="align-middle">
+                              <div class="btn-group align-top">
+                                <button  class="btn btn-sm btn-light btn-svg" type="button">Edit</button>
+                                <button  class="btn btn-sm btn-light btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 9h8v10H8z" opacity=".3"/><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td class="align-middle">
+                              <div class="btn-group align-top">
+                                <button  class="btn btn-sm btn-light btn-svg" type="button">Edit</button>
+                                <button  class="btn btn-sm btn-light btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 9h8v10H8z" opacity=".3"/><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div *ngSwitchCase="'tab09'">
+              <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onAddDepartment(addForm)" class="form-horizontal">
+                  <div class="card-header">
+                     <h2>Add New Contract</h2>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Contract Type:</label>
+                      <ng-select #contracttype (ngModel)="contracttype" name="contracttype" id="contracttype" class="form-control form-select" placeholder="Select Contract Type">
+                            <ng-option value="" [disabled]="true">No Contract Type Selected</ng-option>
+                            <ng-option value="1">Fixed-price</ng-option>
+                            <ng-option value="2">Cost-reimbursement</ng-option>
+                            <ng-option value="3">Cost-plus</ng-option>
+                            <ng-option value="4">Time and materials</ng-option>
+                            <ng-option value="5">Others</ng-option>
+                          </ng-select>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Contract Title:</label>
+                      <input type="text" #contracttitle (ngModel)="contracttitle" id="contracttitle" name="contracttitle" class="form-control mt-2 text-line" placeholder="Contract Title" >
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">From:</label>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                          <input #contractfrom (ngModel)="contractfrom" matInput [matDatepicker]="picker_contractfrom">
+                          <mat-datepicker-toggle matSuffix [for]="picker_contractfrom"></mat-datepicker-toggle>
+                          <mat-datepicker #picker_contractfrom></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">To:</label>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                          <input #contractto (ngModel)="contractto" matInput [matDatepicker]="picker_contractto">
+                          <mat-datepicker-toggle matSuffix [for]="picker_contractto"></mat-datepicker-toggle>
+                          <mat-datepicker #picker_contractto></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Contract Designation:</label>
+                      <input type="text" #contractdesignation (ngModel)="contractdesignation" id="contractdesignation" name="contractdesignation" class="form-control mt-2 text-line" placeholder="Designation Name" >
+                    </div>
+                  </div>
+                  <!-- <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Salary:</label>
+                      <input type="text" #contactno (ngModel)="contactno" id="contactno" name="contactno" class="form-control mt-2 text-line" placeholder="Salary" >
+                    </div>
+                  </div> -->
+                  <div class="m-3 row">
+                    <div class="col-md-12">
+                      <button type="submit" id="add-department-form" class="btn btn-dark m-3">SAVE</button>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="card-title bg-dark p-3 text-white">
+                      List Of Employee Contracts
+                    </div>
+                    <div class="table-responsive table-bordered table-hover table-striped">
+                      <table class="table text-md-nowrap" id="myTable1">
+                        <thead>
+                          <tr>
+                            <th class="wd-15p border-bottom-0">Contract Type</th>
+                            <th class="wd-15p border-bottom-0">Contract Title</th>
+                            <th class="wd-15p border-bottom-0">From</th>
+                            <th class="wd-15p border-bottom-0">To</th>
+                            <th class="wd-15p border-bottom-0">Designation</th>
+                            <th class="wd-15p border-bottom-0">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td class="align-middle">
+                              <div class="btn-group align-top">
+                                <button  class="btn btn-sm btn-light btn-svg" type="button">Edit</button>
+                                <button  class="btn btn-sm btn-light btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 9h8v10H8z" opacity=".3"/><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td class="align-middle">
+                              <div class="btn-group align-top">
+                                <button  class="btn btn-sm btn-light btn-svg" type="button">Edit</button>
+                                <button  class="btn btn-sm btn-light btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 9h8v10H8z" opacity=".3"/><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td class="align-middle">
+                              <div class="btn-group align-top">
+                                <button  class="btn btn-sm btn-light btn-svg" type="button">Edit</button>
+                                <button  class="btn btn-sm btn-light btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 9h8v10H8z" opacity=".3"/><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+            <div *ngSwitchCase="'tab10'">
+              <div class="card">
+                <form #addForm="ngForm" (ngSubmit)="onAddDepartment(addForm)" class="form-horizontal">
+                  <div class="card-header">
+                     <h2>Add New Insurance Dependent</h2>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Insurance Company Name:</label>
+                          <ng-select #insurancecompany (ngModel)="insurancecompany" name="insurancecompany" id="insurancecompany" class="form-control form-select" placeholder="Select Insurance Company">
+                            <ng-option value="" [disabled]="true">No Insurance Company Selected</ng-option>
+                            <ng-option value="1">ABC company</ng-option>
+                            <ng-option value="2">Islamic Company</ng-option>
+                            <ng-option value="3">The First </ng-option>
+                            <ng-option value="4">Others</ng-option>
+                          </ng-select>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Dependent Name:</label>
+                      <input type="text" #dependentname (ngModel)="dependentname" id="dependentname" name="dependentname" class="form-control mt-2 text-line" placeholder="Dependent Name" >
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Relative Relation:</label>
+                      <ng-select #dependentrealtion (ngModel)="dependentrealtion" name="dependentrealtion" id="dependentrealtion" class="form-control form-select" placeholder="Select Dependent Realtion">
+                            <ng-option value="" [disabled]="true">No Relative Relation Selected</ng-option>
+                            <ng-option value="1">Husband</ng-option>
+                            <ng-option value="2">Wife</ng-option>
+                            <ng-option value="3">Son</ng-option>
+                            <ng-option value="4">Daughter</ng-option>
+                            <ng-option value="5">Father</ng-option>
+                            <ng-option value="6">Mother</ng-option>
+                            <ng-option value="6">Others</ng-option>
+                          </ng-select>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Gender:</label>
+                      <ng-select #dependentgender (ngModel)="dependentgender" name="dependentgender" id="dependentgender" class="form-control form-select" placeholder="Select Dependent Gender">
+                            <ng-option value="" [disabled]="true">No Dependent Gender Selected</ng-option>
+                            <ng-option value="1">male</ng-option>
+                            <ng-option value="2">Female</ng-option>                            
+                          </ng-select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Date Of Birth:</label>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                          <input #depbirthdate (ngModel)="depbirthdate" matInput [matDatepicker]="picker_depbirthdate">
+                          <mat-datepicker-toggle matSuffix [for]="picker_depbirthdate"></mat-datepicker-toggle>
+                          <mat-datepicker #picker_depbirthdate></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="m-3 row">
+                    <div class="col-md-6">
+                      <label for="" class="form-label">Insurance Degree:</label>
+                          <ng-select #insurancedegree (ngModel)="insurancedegree" name="insurancedegree" id="insurancedegree" class="form-control form-select" placeholder="Select Insurance Degree">
+                            <ng-option value="" [disabled]="true">No Insurance Degree Selected</ng-option>
+                            <ng-option value="1">1</ng-option>
+                            <ng-option value="2">2</ng-option>
+                            <ng-option value="3">3</ng-option>
+                            <ng-option value="4">4</ng-option>
+                            <ng-option value="5">Others</ng-option>
+                          </ng-select>
+                    </div>
+                  </div>
+                  <div class="row m-3">
+                    <div class="col-md-12">
+                        <button type="submit" id="add-department-form" class="btn btn-dark m-3">SAVE</button>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="card-title bg-dark p-3 text-white">
+                      List Of Insurance Dependents
+                    </div>
+                    <div class="table-responsive table-bordered table-hover table-striped">
+                      <table class="table text-md-nowrap" id="myTable1">
+                        <thead>
+                          <tr>
+                            <th class="wd-15p border-bottom-0">Company</th>
+                            <th class="wd-15p border-bottom-0">Dependent Name</th>
+                            <th class="wd-15p border-bottom-0">Relation</th>
+                            <th class="wd-15p border-bottom-0">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td>AlEtihad</td>
+                            <td class="align-middle">
+                              <div class="btn-group align-top">
+                                <button  class="btn btn-sm btn-light btn-svg" type="button">Edit</button>
+                                <button  class="btn btn-sm btn-light btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 9h8v10H8z" opacity=".3"/><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+
+            </div>
+          </div>
+          </div>
+
+
+
+
+
+
+  <!-- </div> -->
+
+
+

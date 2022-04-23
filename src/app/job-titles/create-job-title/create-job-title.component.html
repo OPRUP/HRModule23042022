@@ -1,0 +1,73 @@
+
+						<!--Page header-->
+						<div class="page-header">
+							<div class="page-leftheader">
+								<h2 class="page-title">Ceate Job Title</h2>
+							</div>
+							<div class="page-rightheader ms-auto d-lg-flex d-none">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="javascript:void(0)" class="d-flex"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z"/><path d="M7 10.19V18h2v-6h6v6h2v-7.81l-5-4.5z" opacity=".3"/></svg><span class="breadcrumb-icon"> Home</span></a></li>
+									<li class="breadcrumb-item"><a href="javascript:void(0)">Job titles</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Create Job Title</li>
+								</ol>
+							</div>
+						</div>
+						<!--End Page header-->
+
+
+            <div class="card">
+              <form  (ngSubmit)="onAddJobtitle()" class="form-horizontal">
+                <div class="card-header">
+                  <button type="submit" id="add-job-title-form" class="btn btn-dark m-3">SAVE</button>
+                  <a [routerLink]="['/job-titles/job-titles']" class="btn btn-light">DISCARD</a>
+                </div>
+
+                <div class="m-3 row">
+                  <div class="col-md-5">
+                    <label for="" class="form-label">Job Titles:</label>
+                    <input type="text"  [(ngModel)]="jobTitleData.jobTitleName" id="jobTitleName" name="jobTitleName" class="form-control mt-2 text-line" placeholder="Job Title" >
+                  </div>
+                </div>
+
+                <div class="m-3 row mb-6">
+                  <div class="col-md-5">
+                    <label for="" class="form-label">Central Job:</label>
+                    <ng-select name="centralJob"   [(ngModel)]="jobTitleData.centralJob.centralId" class="form-control form-select" placeholder="-- Select Central Job --">
+                        <ng-option *ngFor="let central of centralJobs" [value] ="central.centralId">{{central.centralJobName}}</ng-option>
+                    </ng-select>
+
+                  </div>
+                </div>
+
+                <div class="m-3 row">
+                  <div class="col-md-5">
+                    <label for="" class="form-label">Description:</label>
+                    <textarea  [(ngModel)]="jobTitleData.description" class="form-control mt-2 text-line" id="description" name="description" id="" cols="50" rows="5" placeholder="Description"></textarea>
+                  </div>
+                </div>
+
+
+                </form>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+
+						<!--Page header-->
+						<div class="page-header">
+							<div class="page-leftheader">
+								<h4 class="page-title">Update Top Management</h4>
+							</div>
+							<div class="page-rightheader ms-auto d-lg-flex d-none">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="javascript:void(0)" class="d-flex"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z"/><path d="M7 10.19V18h2v-6h6v6h2v-7.81l-5-4.5z" opacity=".3"/></svg><span class="breadcrumb-icon"> Home</span></a></li>
+									<li class="breadcrumb-item"><a href="javascript:void(0)">Top Managements</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Update Top Management</li>
+								</ol>
+							</div>
+						</div>
+						<!--End Page header-->
+
+
+
+            <div class="card">
+              <form #editForm="ngForm" (ngSubmit)="onUpdateTopManagement(editForm.value)" class="form-horizontal">
+                  <div class="card-header">
+                    <button  (click)="onUpdateTopManagement(editForm.value)" class="btn btn-dark m-3">SAVE</button>
+                    <a [routerLink]="['/top-managements/top-managements']" class="btn btn-light">DISCARD</a>
+                  </div>
+                  <input type="hidden" ngModel="{{topManagement.topManagementId}}" name="topManagementId" id="topManagementId">
+                  <div class="m-3 row">
+                    <div class="col-md-5">
+                      <input type="text" ngModel="{{topManagement.topManagementName}}" #topManagementName (ngModel)="topManagementName" id="topManagementName" name="topManagementName" class="form-control mt-2 text-line" placeholder="Top Management Name" >
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row">
+                    <div class="col-md-6">
+                      <textarea ngModel="{{topManagement.description}}"  #description (ngModel)="description" class="mt-lg-6 m-5" id="description" name="description" cols="50" rows="5" placeholder="Description"></textarea>
+                    </div>
+                  </div>
+                </form>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
